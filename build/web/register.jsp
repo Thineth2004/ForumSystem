@@ -1,6 +1,6 @@
 <%-- 
-    Document   : error.jsp
-    Created on : Mar 16, 2026, 10:03:54 AM
+    Document   : register.jsp
+    Created on : Mar 16, 2026, 10:02:34 AM
     Author     : Thineth
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+        <h1>Hello World!</h1>
     </body>
 </html>
