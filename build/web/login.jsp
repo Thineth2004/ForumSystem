@@ -15,9 +15,23 @@
     <body>
         <div class="login-container">
             <h1>Login</h1>
+            <%
+                String error = request.getParameter("error");
+                if(error != null){
+            %>
+                <p class="error">Invalid username or password</p>
+                <%
+                }
+                %>          
             <form method="post" action="LoginServlet">
-               
+                <label>Username</label>
+                <input type="text" name="username" required><br>
+                <label>Password</label>
+                <input type="password" name="password" required>
+                <input type="submit" value="Login">
             </form>
+            <br>
+            <a href="register.jsp">Create Account</a>
         </div>
     </body>
 </html>
