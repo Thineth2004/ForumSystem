@@ -4,9 +4,11 @@
  */
 package com.forum.servlet;
 
+import com.forum.dao.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,6 +18,8 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author Thineth
  */
+
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 
     /**
@@ -73,15 +77,20 @@ public class LoginServlet extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
-        if(username.equals("admin") && password.equals("1234")) {
-            
+
+        boolean validUser = UserDAO.login(username, password);
+
+        if(validUser){
+
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
-            
+
             response.sendRedirect("dashboard.jsp");
+
         } else {
+
             response.sendRedirect("login.jsp?error=1");
+
         }
     }
 
