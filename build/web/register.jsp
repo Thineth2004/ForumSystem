@@ -9,9 +9,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Register</title>
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <div class="login-container">
+            <h1>Register</h1>
+
+            <form method="post" action="RegisterServlet">
+                <label>Username</label>
+                <input type="text" name="username" required>
+
+                <label>Password</label>
+                <input type="password" name="password" required>
+
+                <label>Role</label>
+                <select name="role">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
+
+                <input type="submit" value="Register">
+            </form>
+
+            <br>
+            <a href="login.jsp">Back to Login</a>
+        </div>
     </body>
 </html>
