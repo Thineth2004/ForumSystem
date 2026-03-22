@@ -12,6 +12,14 @@
         <servlet-name>PostServlet</servlet-name>
         <servlet-class>com.forum.servlet.PostServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <servlet-class>com.forum.servlet.DeletePostServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>com.forum.servlet.CommentServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>PostServlet</servlet-name>
         <url-pattern>/PostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletePostServlet</servlet-name>
+        <url-pattern>/DeletePostServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/CommentServlet</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>

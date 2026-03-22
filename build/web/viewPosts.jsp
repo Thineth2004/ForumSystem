@@ -7,6 +7,7 @@
 <%@page import="java.sql.*"%>
 <%@page import="com.forum.util.DBConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
     String user = (String) session.getAttribute("username");
 
@@ -22,29 +23,74 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Posts</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <div class="login-container">
-            <h1>All Posts</h1>
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-            <%
-                while(rs.next()){
-            %>
-                <div style="border:1px solid #ccc; padding:10px; margin:10px;">
-                    <h3><%= rs.getString("title") %></h3>
-                    <p><%= rs.getString("content") %></p>
-                    <small>By: <%= rs.getString("username") %></small>
-                </div>
-            <%
-                }
-            %>
+<div class="login-container">
+    <h1>All Posts</h1>
 
-            <a href="createPost.jsp">Create New Post</a><br><br>
-            <a href="dashboard.jsp">Back</a>
-        </div>
-    </body>
+    <%
+        while(rs.next()){
+            int postId = rs.getInt("id");
+    %>
+
+    <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+        
+        <!-- Post Content -->
+        <h3><%= rs.getString("title") %></h3>
+        <p><%= rs.getString("content") %></p>
+        <small>By: <%= rs.getString("username") %></small><br><br>
+
+        <!-- Delete Button (Only Owner) -->
+        <%
+            if(user.equals(rs.getString("username"))){
+        %>
+            <a href="DeletePostServlet?id=<%= postId %>">Delete</a>
+        <%
+            }
+        %>
+
+        <hr>
+
+        <!-- COMMENTS SECTION -->
+        <h4>Comments:</h4>
+
+        <%
+            Statement cstmt = conn.createStatement();
+            ResultSet crs = cstmt.executeQuery(
+                "SELECT * FROM comments WHERE post_id=" + postId + " ORDER BY created_at ASC"
+            );
+
+            while(crs.next()){
+        %>
+            <p>
+                <b><%= crs.getString("username") %>:</b>
+                <%= crs.getString("comment") %>
+            </p>
+        <%
+            }
+        %>
+
+        <!-- Add Comment Form -->
+        <form method="post" action="CommentServlet">
+            <input type="hidden" name="postId" value="<%= postId %>">
+            <input type="text" name="comment" placeholder="Write a comment..." required>
+            <input type="submit" value="Comment">
+        </form>
+
+    </div>
+
+        <%
+            }
+        %>
+
+        <a href="createPost.jsp">Create New Post</a><br><br>
+        <a href="dashboard.jsp">Back</a>
+    </div>
+
+</body>
 </html>

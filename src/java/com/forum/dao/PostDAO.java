@@ -40,4 +40,30 @@ public class PostDAO {
 
         return status;
     }
+    
+    public static boolean deletePost(int id){
+
+        boolean status = false;
+
+        try {
+            Connection conn = DBConnection.getConnection();
+
+            String sql = "DELETE FROM posts WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setInt(1, id);
+
+            int rows = ps.executeUpdate();
+
+            if(rows > 0){
+                System.out.println("🗑️ POST DELETED");
+                status = true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return status;
+    }
 }
