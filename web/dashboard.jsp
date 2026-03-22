@@ -5,13 +5,30 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    String user = (String) session.getAttribute("username");
+
+    if(user == null){
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Dashboard</title>
     </head>
     <body>
-        <h1>Admin dashboard is here!</h1>
+        <div class="login-container">
+            <h1>Welcome, <%= user %> 🎉</h1>
+
+            <p>You are successfully logged in.</p>
+
+            <a href="createPost.jsp">Create Post</a><br><br>
+
+            <a href="LogoutServlet">Logout</a>
+        </div>
     </body>
 </html>
