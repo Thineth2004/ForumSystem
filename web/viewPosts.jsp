@@ -40,7 +40,7 @@
             int likes = LikeDAO.countLikes(postId);
     %>
 
-    <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    <div class="post-card">
         
         <!-- Post Content -->
         <h3><%= rs.getString("title") %></h3>
@@ -48,16 +48,16 @@
         <small>By: <%= rs.getString("username") %></small><br><br>
         
         <!-- LIKE SYSTEM -->
-        <p>👍 Likes: <%= likes %></p>
-        <a href="LikeServlet?id=<%= postId %>">Like</a><br><br>
+        <p class="like">👍 <%= likes %> Likes</p>
+        <a href="LikeServlet?id=<%= postId %>">👍 Like</a><br><br>
 
 
         <!-- Delete Button (Only Owner) -->
         <%
             if(user.equals(rs.getString("username"))){
         %>
-            <a href="editPost.jsp?id=<%= postId %>">Edit</a>
-            <a href="DeletePostServlet?id=<%= postId %>">Delete</a>
+            <a href="editPost.jsp?id=<%= postId %>">✏️ Edit</a>s
+            <a href="DeletePostServlet?id=<%= postId %>">🗑 Delete</a>
         <%
             }
         %>
@@ -75,10 +75,10 @@
 
             while(crs.next()){
         %>
-            <p>
+            <div class="comment-box">
                 <b><%= crs.getString("username") %>:</b>
                 <%= crs.getString("comment") %>
-            </p>
+            </div>
         <%
             }
         %>
