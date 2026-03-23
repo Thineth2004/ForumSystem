@@ -6,6 +6,7 @@
 
 <%@page import="java.sql.*"%>
 <%@page import="com.forum.util.DBConnection"%>
+<%@page import="com.forum.dao.LikeDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -36,6 +37,7 @@
     <%
         while(rs.next()){
             int postId = rs.getInt("id");
+            int likes = LikeDAO.countLikes(postId);
     %>
 
     <div style="border:1px solid #ccc; padding:10px; margin:10px;">
@@ -44,11 +46,17 @@
         <h3><%= rs.getString("title") %></h3>
         <p><%= rs.getString("content") %></p>
         <small>By: <%= rs.getString("username") %></small><br><br>
+        
+        <!-- LIKE SYSTEM -->
+        <p>👍 Likes: <%= likes %></p>
+        <a href="LikeServlet?id=<%= postId %>">Like</a><br><br>
+
 
         <!-- Delete Button (Only Owner) -->
         <%
             if(user.equals(rs.getString("username"))){
         %>
+            <a href="editPost.jsp?id=<%= postId %>">Edit</a>
             <a href="DeletePostServlet?id=<%= postId %>">Delete</a>
         <%
             }

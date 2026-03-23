@@ -10,6 +10,20 @@
             <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/web/login.jsp</file>
             <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/web/dashboard.jsp</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/web/register.jsp</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/servlet/RegisterServlet.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/servlet/LogoutServlet.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/web/createPost.jsp</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/servlet/PostServlet.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/dao/PostDAO.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/web/viewPosts.jsp</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/servlet/DeletePostServlet.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/dao/CommentDAO.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/servlet/CommentServlet.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/web/editPost.jsp</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/servlet/UpdatePostServlet.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/dao/LikeDAO.java</file>
+            <file>file:/C:/Users/Thineth/Documents/NetBeansProjects/ForumSystem/src/java/com/forum/servlet/LikeServlet.java</file>
         </group>
     </open-files>
 </project-private>

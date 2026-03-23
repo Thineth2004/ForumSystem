@@ -66,4 +66,32 @@ public class PostDAO {
 
         return status;
     }
+    
+    public static boolean updatePost(int id, String title, String content){
+
+        boolean status = false;
+
+        try {
+            Connection conn = DBConnection.getConnection();
+
+            String sql = "UPDATE posts SET title=?, content=? WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, title);
+            ps.setString(2, content);
+            ps.setInt(3, id);
+
+            int rows = ps.executeUpdate();
+
+            if(rows > 0){
+                System.out.println("✏️ POST UPDATED");
+                status = true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return status;
+    }
 }
